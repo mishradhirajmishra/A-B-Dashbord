@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="col-md-6 offset-md-3">
+        <h1 class="mat-display-2">{{title}}</h1>
+        <div class="card">
+
+            <!-- {{userProfile.value |json}} -->
+            <!-- =========================================== -->
+            <form class="form"  [formGroup]="userProfile" (ngSubmit)="updateProfile()">
+                    <!-- ................. -->
+                    <div class="form-group">
+                        <label for="name" >Username</label>
+                        <input id="name" class="form-control" [class.is-invalid]="username?.touched && username?.errors?.required" [class.is-valid]=""  type="text" formControlName="username">
+                        <small class="form-text text-right text-danger" *ngIf="username?.touched && username?.errors?.required">This field  is required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email {{emailErr}}</label>
+                        <input id="email" (keyup)="emailExist(email)" class="form-control" [class.is-invalid]="email.touched && (email?.errors || emailErr)" [class.is-valid]="email.touched && !email?.errors &&  !emailErr"  type="email" formControlName="email" >    
+                        <small class="form-text text-right text-danger" *ngIf="email.touched && email?.errors?.required">This  field is required</small>
+                        <small class="form-text text-right text-danger" *ngIf="email.touched && email.errors && !email?.errors?.required">Invalid Email</small>
+                        <small class="form-text text-right text-danger" *ngIf="emailErr">Email Already registred</small>
+      
+                    </div>
+                    <p>
+                        <!-- ................. -->            
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input id="password"  [class.is-invalid]="password.touched && password.errors" [class.is-valid]="password.touched && !password.errors" class="form-control" type="password" formControlName="password" >
+                            <small class="form-text text-right text-danger" *ngIf="password.touched && password.errors?.required">This field is required</small>
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="c-password">Confirm Password</label>
+                            <input  id="c-password" class="form-control" type="password" formControlName="cpassword"
+                            name="cpassword">
+                        <small class="form-text text-right text-danger"  *ngIf="cpassword?.touched && cpassword?.errors?.required">This field is required
+                        </small>
+                        <small class="form-text text-right text-danger" 
+                            *ngIf="cpassword?.touched && (cpassword?.errors?.invalidPss) && !cpassword?.errors?.required ">
+                            Password must be equal</small>
+                        </div>
+                   
+                    <button class="btn btn-success" [disabled]="!userProfile.valid" type="submit">Register</button>
+                    <h4 class="register" routerLink="../login">Login</h4>
+                </form>
+            <!-- ============================================ -->
+        </div>
+    </div>
+</div>

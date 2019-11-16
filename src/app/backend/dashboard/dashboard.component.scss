@@ -1,0 +1,35 @@
+@import '../../../partial';
+.form-group{
+    width: 100px;
+    min-width: 500px;
+}
+mat-hint{
+    color: red !important;
+}
+.right{
+   float: right;
+}
+fieldset {
+    border-color: #d3d3d33d;;
+    border-radius: 5px;
+    min-width: 475px!important;
+}
+fieldset :hover{
+    border-color: $mat-primary-main;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
